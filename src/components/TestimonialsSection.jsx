@@ -51,7 +51,7 @@ export default function Testimonialssection() {
 
   return (
     <section id="testimonials" className={styles.testimonials}>
-      <h4 className={styles.subtitle}>TESTIMONIAL</h4>
+      <h4 className={styles.subtitle}>Reviews</h4>
       <h2 className={styles.title}>What Our Clients Say</h2>
 
       <div className={`${styles["testimonial-content"]} ${styles.fade}`}>
