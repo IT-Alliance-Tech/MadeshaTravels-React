@@ -3,10 +3,10 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './pages/home';
 import ContactUs from './pages/contactUs';
 import ServiceDetails from './pages/serviceDetails';
-import Faq from './pages/faq';
 import WhyUs from './pages/whyUs';
 import PartnerSection from './pages/partner';
 import Header from "./components/Header";
+import FaqSection from "./pages/faq";
 
 function App() {
   return (
@@ -16,9 +16,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/contactUs' element={<ContactUs />} />
-          <Route path="/services/:id" element={<ServiceDetails />} />
           <Route path='/serviceDetails' element={<ServiceDetails />} />
-          <Route path='/faq' element={<Faq />} />
+          <Route path='/faq' element={<FaqSection />} />
           <Route path='/whyUs' element={<WhyUs />} />
           <Route path='/partner' element={<PartnerSection />} />
 
