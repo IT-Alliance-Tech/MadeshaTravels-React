@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import styles from "../styles/footer.module.css"; // ✅ import as styles object
 
-const Footer = () => {
+export default function Footer() {
   const [openSection, setOpenSection] = useState(null);
 
   const socialLinks = [
@@ -118,4 +118,3 @@ const Footer = () => {
   );
 };
 
-export default Footer;
