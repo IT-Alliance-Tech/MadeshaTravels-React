@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/footer.module.css"; // ✅ import as styles object
 
 export default function Footer() {
   const [openSection, setOpenSection] = useState(null);
+  const navigate = useNavigate();
 
   const socialLinks = [
     { icon: <FaFacebookF />, href: "https://www.facebook.com/profile.php?id=61579286710827&sk=about" },
@@ -43,6 +45,27 @@ export default function Footer() {
 
   const handleScroll = (id) => {
     if (!id) return;
+    
+    // Navigate to home first if not already there
+    if (window.location.pathname !== '/') {
+      navigate('/');
+      // Wait a bit for navigation to complete, then scroll
+      setTimeout(() => {
+        const section = document.getElementById(id);
+        if (section) {
+          const headerOffset = 80;
+          const elementPosition = section.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }, 100);
+      return;
+    }
+
     const section = document.getElementById(id);
     if (section) {
       const headerOffset = 80;
@@ -62,7 +85,12 @@ export default function Footer() {
         {/* Left Section */}
         <div className={styles["footer-left"]}>
           <div className={styles["logo-area"]}>
-            <h2 className={styles["footer-brand"]}>Madesha Tour & Travels</h2>
+            <button 
+              onClick={() => navigate('/')}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+            >
+              <h2 className={styles["footer-brand"]}>Madesha Tour & Travels</h2>
+            </button>
           </div>
           <p className={styles["footer-text"]}>
             From breathtaking destinations to unforgettable experiences, we’re here to make every journey safe, simple, and truly memorable.
@@ -100,7 +128,7 @@ export default function Footer() {
           <ul>
             {footerLinks[1].links.map((link, i) => (
               <li key={i}>
-                <a href={link.path}>{link.name}</a>
+                <Link to={link.path}>{link.name}</Link>
               </li>
             ))}
           </ul>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Logo from "../../public/madeshalogo.svg"; // check path
 import styles from "../styles/header.module.css";
 
@@ -13,12 +14,36 @@ const navLinks = [
 ];
 
 const Header = () => {
+  const navigate = useNavigate();
+
   const handleScroll = (id) => {
     if (!id) return;
 
     // Scroll to top for Home
     if (id === "home") {
+      // Navigate to home page first, then scroll to top
+      navigate('/');
       window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    // For other sections, navigate to home first if not already there
+    if (window.location.pathname !== '/') {
+      navigate('/');
+      // Wait a bit for navigation to complete, then scroll
+      setTimeout(() => {
+        const section = document.getElementById(id);
+        if (section) {
+          const headerOffset = document.querySelector(`.${styles.header}`).offsetHeight;
+          const elementPosition = section.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }, 100);
       return;
     }
 
@@ -40,7 +65,7 @@ const Header = () => {
     <header className={styles.header}>
       {/* Logo */}
       <div className={styles.logo}>
-        <Link to="/">
+        <button onClick={() => handleScroll('home')} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
           <img
             src={Logo}
             alt="Madesha Logo"
@@ -48,7 +73,7 @@ const Header = () => {
             height={40}
             className="cursor-pointer"
           />
-        </Link>
+        </button>
       </div>
 
       {/* Navigation */}
