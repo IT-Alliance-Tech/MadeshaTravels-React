@@ -1,37 +1,29 @@
 import { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
-
-import test1 from "../../public/test2.png";
-import test2 from "../../public/test1.png";
-import test3 from "../../public/test.png";
-import test4 from "../../public/5.png";
+import { FaQuoteLeft } from "react-icons/fa";
 
 import styles from "../styles/testimonialsSection.module.css";
 
 const testimonials = [
   {
-    img: test1,
     name: "Smitha",
     role: "Travel Enthusiast",
     review:
       "Our Kerala backwaters trip was absolutely breathtaking. The houseboat stay was so peaceful, and everything was perfectly arranged by Madesha Tour and Travels.",
   },
   {
-    img: test2,
     name: "Rahul",
     role: "Photographer",
     review:
       "Thanks to Madesha Tour and Travels, we finally visited Kashmir! The snow in Gulmarg and the hospitality were unforgettable. A truly hassle-free trip.",
   },
   {
-    img: test3,
     name: "Anita",
     role: "Designer",
     review:
       "Our trip to Himachal Pradesh was a dream come true. Trekking in Manali and camping in Kasol were highlights. Everything was well managed by Madesha Tour and Travels",
   },
   {
-    img: test4,
     name: "Chaya",
     role: "Dancer",
     review:
@@ -59,28 +51,26 @@ export default function Testimonialssection() {
 
   return (
     <section id="testimonials" className={styles.testimonials}>
-      <h4 className={styles.subtitle}>TESTIMONIALS</h4>
-      <h2 className={styles.title}>Trust our clients</h2>
+      <h4 className={styles.subtitle}>TESTIMONIAL</h4>
+      <h2 className={styles.title}>What Our Clients Say</h2>
 
       <div className={`${styles["testimonial-content"]} ${styles.fade}`}>
-        <img
-          src={testimonials[current].img}
-          alt={testimonials[current].name}
-          className={styles["testimonial-img"]}
-        />
+        <div className={styles["quote-icon"]}>
+          <FaQuoteLeft />
+        </div>
 
-        <h3 className={styles.name}>
-          {testimonials[current].name}{" "}
-          <span className={styles.role}>/ {testimonials[current].role}</span>
-        </h3>
+        <p className={styles.review}>"{testimonials[current].review}"</p>
+
+        <div className={styles["client-info"]}>
+          <h3 className={styles.name}>{testimonials[current].name}</h3>
+          <p className={styles.role}>{testimonials[current].role}</p>
+        </div>
 
         <div className={styles.stars}>
           {[...Array(5)].map((_, i) => (
             <FaStar key={i} color="#fbbf24" />
           ))}
         </div>
-
-        <p className={styles.review}>“{testimonials[current].review}”</p>
       </div>
 
       {/* Arrows outside testimonial-content */}
