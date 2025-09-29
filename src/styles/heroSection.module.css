@@ -2,12 +2,23 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 8% 40px;  /* Minimal top padding */
+  padding: 20px 8% 60px;  /* Minimal top padding */
   gap: 60px;
   flex-wrap: wrap;
   position: relative;
   margin-top: 80px;  /* This accounts for fixed header */
   min-height: calc(100vh - 80px);
+}
+
+.brandName {
+  font-size: 24px;
+  font-weight: 700;
+  color: #673AB7;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+  margin-top: 0;  /* Add this */
+  padding-top: 0;  /* Add this */
+  display: inline-block;
 }
 
 .left {
