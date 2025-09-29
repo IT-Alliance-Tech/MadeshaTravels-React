@@ -1,9 +1,8 @@
-import React from 'react'
 import HeroSection from '../components/HeroSection'
-import EnquiryForm from '../components/enquirySection'
+import EnquiryForm from "../components/EnquirySection"
 import ServicesSection from '../components/ServicesSection'
-import DestinationSection from '../components/discoverSection'
-import GallerySection from '../components/gallerySection'
+import DestinationSection from '../components/DiscoverSection'
+import GallerySection from '../components/GallerySection'
 import Testimonials from '../components/TestimonialsSection'
 
 
