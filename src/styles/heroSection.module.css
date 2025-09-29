@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 100px 8% 60px;
+  padding: 120px 8% 60px;
   gap: 60px;
   flex-wrap: wrap;
   position: relative;
@@ -14,6 +14,15 @@
   flex: 1;
   min-width: 400px;
   z-index: 2;
+}
+
+.brandName {
+  font-size: 24px;
+  font-weight: 700;
+  color: #673AB7;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+  display: inline-block;
 }
 
 .exploreBtn {
@@ -69,16 +78,6 @@
   margin-bottom: 24px;
   max-width: 480px;
   line-height: 1.6;
-}
-
-.brandName {
-  font-size: 20px;
-  font-weight: 700;
-  color: #673AB7;
-  letter-spacing: 1px;
-  margin-top: 32px;
-  padding-top: 24px;
-  border-top: 2px solid #f1f1ff;
 }
 
 .right {
@@ -206,6 +205,10 @@
     font-size: 52px;
   }
 
+  .brandName {
+    font-size: 22px;
+  }
+
   .left {
     min-width: 320px;
   }
@@ -237,6 +240,11 @@
     min-width: auto;
   }
 
+  .brandName {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
   .left h1 {
     font-size: 42px;
   }
@@ -244,12 +252,6 @@
   .subtitle {
     margin: 0 auto 20px;
     font-size: 16px;
-  }
-
-  .brandName {
-    margin-top: 24px;
-    padding-top: 20px;
-    font-size: 18px;
   }
 
   .exploreBtn {
@@ -284,18 +286,17 @@
     gap: 30px;
   }
 
+  .brandName {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
   .left h1 {
     font-size: 32px;
   }
 
   .subtitle {
     font-size: 14px;
-  }
-
-  .brandName {
-    font-size: 16px;
-    margin-top: 20px;
-    padding-top: 16px;
   }
 
   .exploreBtn {
@@ -343,16 +344,17 @@
     padding: 80px 3% 20px;
   }
 
+  .brandName {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
   .left h1 {
     font-size: 26px;
   }
 
   .subtitle {
     font-size: 13px;
-  }
-
-  .brandName {
-    font-size: 14px;
   }
 
   .imageLayout {
