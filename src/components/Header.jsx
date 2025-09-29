@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../public/madeshalogo.svg"; // check path
+import Logo from "../../public/madeshalogo.svg";
 import styles from "../styles/header.module.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -16,13 +16,16 @@ const navLinks = [
 
 const Header = () => {
   const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleScroll = (id) => {
     if (!id) return;
 
+    // Close mobile menu when a link is clicked
+    setIsMobileMenuOpen(false);
+
     // Scroll to top for Home
     if (id === "home") {
-      // Navigate to home page first, then scroll to top
       navigate('/');
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
@@ -31,14 +34,12 @@ const Header = () => {
     // For other sections, navigate to home first if not already there
     if (window.location.pathname !== '/') {
       navigate('/');
-      // Wait a bit for navigation to complete, then scroll
       setTimeout(() => {
         const section = document.getElementById(id);
         if (section) {
           const headerOffset = document.querySelector(`.${styles.header}`).offsetHeight;
           const elementPosition = section.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
           window.scrollTo({
             top: offsetPosition,
             behavior: "smooth",
@@ -50,11 +51,9 @@ const Header = () => {
 
     const section = document.getElementById(id);
     if (section) {
-      // Adjust offset depending on header height
       const headerOffset = document.querySelector(`.${styles.header}`).offsetHeight;
       const elementPosition = section.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth",
@@ -62,22 +61,28 @@ const Header = () => {
     }
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <header className={styles.header}>
       {/* Logo */}
       <div className={styles.logo}>
-        <button onClick={() => handleScroll('home')} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+        <button 
+          onClick={() => handleScroll('home')} 
+          style={{ background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}
+        >
           <img
             src={Logo}
             alt="Madesha Logo"
             width={140}
             height={40}
-            className="cursor-pointer"
           />
         </button>
       </div>
 
-      {/* Navigation */}
+      {/* Desktop Navigation */}
       <nav className={styles.nav}>
         <ul>
           {navLinks.map((link, index) => (
@@ -93,12 +98,56 @@ const Header = () => {
         </ul>
       </nav>
 
-      {/* Contact button */}
+      {/* Desktop Contact button */}
       <div className={styles["contact-button"]}>
         <Link to="/contactUs" className={styles["contact-btn"]}>
           Contact Us
         </Link>
       </div>
+
+      {/* Mobile Menu Toggle */}
+      <button 
+        className={styles.mobileMenuToggle} 
+        onClick={toggleMobileMenu}
+        aria-label="Toggle menu"
+      >
+        {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+      </button>
+
+      {/* Mobile Menu */}
+      <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
+        <nav className={styles.mobileNav}>
+          <ul>
+            {navLinks.map((link, index) => (
+              <li key={index}>
+                <button
+                  onClick={() => handleScroll(link.id)}
+                  className={styles["mobile-nav-btn"]}
+                >
+                  {link.name}
+                </button>
+              </li>
+            ))}
+            <li>
+              <Link 
+                to="/contactUs" 
+                className={styles["mobile-contact-btn"]}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact Us
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      {/* Overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className={styles.overlay} 
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
     </header>
   );
 };
