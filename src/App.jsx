@@ -4,9 +4,9 @@ import Home from './pages/home';
 import ContactUs from './pages/contactUs';
 import ServiceDetails from './pages/serviceDetails';
 import Faq from './pages/faq';
-import Header from './components/header';
 import WhyUs from './pages/whyUs';
 import PartnerSection from './pages/partner';
+import Header from "./components/Header";
 
 function App() {
   return (

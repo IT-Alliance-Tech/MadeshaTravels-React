@@ -16,45 +16,28 @@ export default function ContactUs() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus("Submitting...");
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setStatus("Submitting...");
 
-    try {
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbzTzDDLivc0eYsvcTrisxNglfNBgoJClH_hRJAD2YfIy25VPEbJNmA9yk_ziCM6mpgvLA/exec",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+  try {
+    const query = new URLSearchParams(formData).toString();
+    const response = await fetch(
+      `https://script.google.com/macros/s/AKfycbzTzDDLivc0eYsvcTrisxNglfNBgoJClH_hRJAD2YfIy25VPEbJNmA9yk_ziCM6mpgvLA/exec?${query}`
+    );
 
-      const resultText = await response.text();
-
-      let result;
-      try {
-        result = JSON.parse(resultText);
-      } catch {
-        result = { status: "error" };
-      }
-
-      if (result.status === "success") {
-        setStatus("Message sent successfully!");
-        setFormData({ name: "", email: "", phone: "", message: "" });
-      } else {
-        setStatus("Something went wrong.");
-      }
-    } catch (error) {
-      console.error(error);
-      setStatus("Error submitting form.");
+    const result = await response.json();
+    if (result.status === "success") {
+      setStatus("Message sent successfully!");
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } else {
+      setStatus("Something went wrong.");
     }
-
-    setLoading(false);
-  };
+  } catch (error) {
+    console.error(error);
+    setStatus("Error submitting form.");
+  }
+};
 
   return (
     <section className={styles.contactSection}>
