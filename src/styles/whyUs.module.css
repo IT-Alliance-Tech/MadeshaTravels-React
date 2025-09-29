@@ -4,8 +4,7 @@
   justify-content: center;
   gap: 60px; /* unchanged */
   padding: 60px 8% 20px 8%; /* bottom padding reduced to 20px */
-  margin-bottom: 0; /* remove extra space */
-  /* font-family: "Inter", sans-serif; */
+  margin: 60px 0 0 0; /* ✅ added top margin */
 }
 
 .imageContainer {

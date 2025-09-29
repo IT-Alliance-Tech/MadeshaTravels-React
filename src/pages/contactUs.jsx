@@ -16,28 +16,40 @@ export default function ContactUs() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setStatus("Submitting...");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus("");
 
-  try {
-    const query = new URLSearchParams(formData).toString();
-    const response = await fetch(
-      `https://script.google.com/macros/s/AKfycbzTzDDLivc0eYsvcTrisxNglfNBgoJClH_hRJAD2YfIy25VPEbJNmA9yk_ziCM6mpgvLA/exec?${query}`
-    );
+    try {
+      // Build FormData instead of JSON (no CORS preflight)
+      const form = new FormData();
+      form.append("name", formData.name);
+      form.append("email", formData.email);
+      form.append("phone", formData.phone);
+      form.append("message", formData.message);
 
-    const result = await response.json();
-    if (result.status === "success") {
-      setStatus("Message sent successfully!");
-      setFormData({ name: "", email: "", phone: "", message: "" });
-    } else {
-      setStatus("Something went wrong.");
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbxRdevDCDN-65c3UERlyegPXyQ18muqfisDhGX4vlt74N4lrKFoKhRBYHoPY6YhZilUPA/exec",
+        {
+          method: "POST",
+          body: form, // 👈 No headers → avoids preflight → no CORS error
+        }
+      );
+
+      const result = await response.json();
+      if (result.status === "success") {
+        setStatus("Form submitted successfully!");
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        setStatus("Submission failed. Please try again.");
+      }
+    } catch (err) {
+      setStatus("Error: " + err.message);
     }
-  } catch (error) {
-    console.error(error);
-    setStatus("Error submitting form.");
-  }
-};
+
+    setLoading(false);
+  };
 
   return (
     <section className={styles.contactSection}>
@@ -138,7 +150,11 @@ const handleSubmit = async (e) => {
               disabled={loading}
             ></textarea>
 
-            <button type="submit" className={styles.submitBtn} disabled={loading}>
+            <button
+              type="submit"
+              className={styles.submitBtn}
+              disabled={loading}
+            >
               {loading ? "Submitting..." : "Submit"}
             </button>
             {status && <p className="mt-4">{status}</p>}

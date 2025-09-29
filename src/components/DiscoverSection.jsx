@@ -17,7 +17,7 @@ const destinationCards = [
   { img: rajasthanImg, name: "Chikmagalur" },
 ];
 
-export default function DestinationSection() {
+export default function DiscoverSection() {
   const scrollRef = useRef(null);
 
   const scrollLeft = () => {

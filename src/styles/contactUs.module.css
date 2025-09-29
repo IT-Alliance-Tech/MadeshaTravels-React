@@ -4,6 +4,7 @@
   padding: 60px 8%;
   background-color: #fff;   /* White background */
   overflow: hidden;
+  margin-top: 60px; /* ✅ Added top margin */
 }
 
 /* Remove background map */
@@ -69,12 +70,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #673ab7;  /* ✅ Updated icon color to match submit button */
 }
 
 .infoHeading {
   font-size: 16px;
   font-weight: 600;
-  color: #673ab7;   /* Same as icon color */
+  color: #673ab7;   /* Already same as icon color */
   margin-bottom: 5px;
 }
 
