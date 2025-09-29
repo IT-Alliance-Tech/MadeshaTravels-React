@@ -6,7 +6,7 @@ import styles from "../styles/enquirySection.module.css";
 export default function EnquiryForm() {
   const [formData, setFormData] = useState({
     name: null,
-    interested: null,
+    message: null,
     email: null,
     phone: null,
   });
@@ -14,71 +14,108 @@ export default function EnquiryForm() {
   const [loading, setLoading] = useState(false); // Loading state
   const [status, setStatus] = useState("");
 
-  const handleSubmit = async (e) => {
-    // e.preventDefault();
+  // const handleSubmit = async (e) => {
+  //   // e.preventDefault();
 
-    // // Start loading
-    // setLoading(true);
+  //   // // Start loading
+  //   // setLoading(true);
 
-    // const formDataToSend = new FormData();
-    // formDataToSend.append("name", formData.name);
-    // formDataToSend.append("phone", formData.phone);
-    // formDataToSend.append("email", formData.email);
-    // formDataToSend.append("interested", formData.interested);
+  //   // const formDataToSend = new FormData();
+  //   // formDataToSend.append("name", formData.name);
+  //   // formDataToSend.append("phone", formData.phone);
+  //   // formDataToSend.append("email", formData.email);
+  //   // formDataToSend.append("message", formData.message);
 
-    // try {
-    //   const response = await fetch(
-    //     "https://script.google.com/macros/s/AKfycbxJpcSgmsC3pfFKiMlGVSJR8XUCT9osXF7i98Q3Xn03nfUC9Yp2UjYABj7fmgsm6VA/exec",
-    //     {
-    //       method: "POST",
-    //       body: formDataToSend,
-    //     }
-    //   );
+  //   // try {
+  //   //   const response = await fetch(
+  //   //     "https://script.google.com/macros/s/AKfycbxJpcSgmsC3pfFKiMlGVSJR8XUCT9osXF7i98Q3Xn03nfUC9Yp2UjYABj7fmgsm6VA/exec",
+  //   //     {
+  //   //       method: "POST",
+  //   //       body: formDataToSend,
+  //   //     }
+  //   //   );
 
-    //   if (!response.ok) throw new Error("Network response was not ok");
+  //   //   if (!response.ok) throw new Error("Network response was not ok");
 
-    //   // Wait for 3 seconds before clearing
-    //   setTimeout(() => {
-    //     alert("Enquiry submitted successfully!");
-    //     setFormData({
-    //       name: "",
-    //       interested: "",
-    //       email: "",
-    //       phone: "",
-    //     });
-    //     setLoading(false);
-    //   }, 3000);
-    // } catch (error) {
-    //   console.error("Fetch error:", error);
-    //   alert("Something went wrong!");
-    //   setLoading(false);
-    // }
+  //   //   // Wait for 3 seconds before clearing
+  //   //   setTimeout(() => {
+  //   //     alert("Enquiry submitted successfully!");
+  //   //     setFormData({
+  //   //       name: "",
+  //   //       message: "",
+  //   //       email: "",
+  //   //       phone: "",
+  //   //     });
+  //   //     setLoading(false);
+  //   //   }, 3000);
+  //   // } catch (error) {
+  //   //   console.error("Fetch error:", error);
+  //   //   alert("Something went wrong!");
+  //   //   setLoading(false);
+  //   // }
 
+  //   e.preventDefault();
+  //   setStatus("Submitting...");
+
+  //   try {
+  //     const response = await fetch("/api/contact", {
+  //       method: "POST",
+  //       body: JSON.stringify(formData),
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+
+  //     const result = await response.json();
+
+  //     if (result.status === "success") {
+  //       setStatus("Message sent successfully!");
+  //       setFormData({ name: "", email: "", phone: "", message: "" });
+  //     } else {
+  //       setStatus("Something went wrong.");
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     setStatus("Error submitting form.");
+  //   }
+  // };
+
+
+    const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("Submitting...");
+    setLoading(true);
+    setStatus("");
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      // Build FormData instead of JSON (no CORS preflight)
+      const form = new FormData();
+      form.append("name", formData.name);
+      form.append("email", formData.email);
+      form.append("phone", formData.phone);
+      form.append("message", formData.message);
+
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbxRdevDCDN-65c3UERlyegPXyQ18muqfisDhGX4vlt74N4lrKFoKhRBYHoPY6YhZilUPA/exec",
+        {
+          method: "POST",
+          body: form, // 👈 No headers → avoids preflight → no CORS error
+        }
+      );
 
       const result = await response.json();
-
       if (result.status === "success") {
-        setStatus("Message sent successfully!");
+        setStatus("Form submitted successfully!");
         setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
-        setStatus("Something went wrong.");
+        setStatus("Submission failed. Please try again.");
       }
-    } catch (error) {
-      console.error(error);
-      setStatus("Error submitting form.");
+    } catch (err) {
+      setStatus("Error: " + err.message);
     }
+
+    setLoading(false);
   };
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -122,8 +159,8 @@ export default function EnquiryForm() {
             placeholder={`Hello, I am interested in booking a\nhotel....`}
             className={styles.textarea}
             onChange={handleChange}
-            name="interested"
-            value={formData.interested}
+            name="message"
+            value={formData.message}
             disabled={loading}
           ></textarea>
           <p className={styles.terms}>
