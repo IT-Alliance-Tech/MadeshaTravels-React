@@ -55,6 +55,9 @@ export default function DiscoverSection() {
 
       {/* Cards Wrapper */}
       <div className={styles.cardsWrapper} ref={scrollRef}>
+        <button onClick={scrollLeft} className={styles.arrowBtnMobile}>
+          ←
+        </button>
         {destinationCards.map((item, index) => (
           <div key={index} className={styles.card}>
             <img
@@ -67,6 +70,9 @@ export default function DiscoverSection() {
             </div>
           </div>
         ))}
+        <button onClick={scrollRight} className={styles.arrowBtnActiveMobile}>
+          →
+        </button>
       </div>
     </section>
   );

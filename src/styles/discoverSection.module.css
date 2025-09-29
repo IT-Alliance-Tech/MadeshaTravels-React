@@ -3,6 +3,7 @@
 .destinationSection {
   padding: 60px 6%;
   font-family: "Rubik", sans-serif;
+  position: relative;
 }
 
 .header {
@@ -164,6 +165,15 @@
   }
 }
 
+@media (min-width: 769px) {
+  .arrowBtnActiveMobile {
+    display: none;
+  }
+  .arrowBtnMobile {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .destinationSection {
     padding: 40px 4%;
@@ -173,9 +183,47 @@
   }
   .cardsWrapper {
     gap: 18px;
+    padding-left: 50px;
   }
   .card {
     flex: 0 0 250px;
+  }
+  .arrowBtnMobile {
+    position: absolute;
+    border: none;
+    background: #7b2cbf;
+    color: #fff;
+    top: 50%;
+    left: 1%;
+    z-index: 999;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+  .arrowBtnActiveMobile {
+    border: none;
+    background: #7b2cbf;
+    position: absolute;
+    right: 1%;
+    top: 50%;
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+  .arrowBtn {
+    display: none;
+  }
+  .arrowBtnActive {
+    display: none;
   }
 }
 
