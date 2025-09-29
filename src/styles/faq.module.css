@@ -2,7 +2,7 @@
 .faqSection {
   padding: 60px 8% 20px 8%; /* reduced bottom padding */
   font-family: "Arial", sans-serif;
-  margin: 60px 0 0 0; /* ✅ top margin 60px */
+  margin-top: 80px 0 0 0; /* ✅ top margin 60px */
 }
 .faqHeader {
   margin-bottom: 20px; /* slightly reduced */

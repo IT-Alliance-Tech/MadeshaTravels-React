@@ -36,10 +36,13 @@ export default function DiscoverSection() {
     <section id="discover" className={styles.destinationSection}>
       {/* Header */}
       <div className={styles.header}>
-        <div>
+        {/* Left Side: Heading */}
+        <div className={styles.headerLeft}>
           <p className={styles.smallHeading}>Top Destination</p>
           <h2 className={styles.mainHeading}>Explore top destination</h2>
         </div>
+
+        {/* Right Side: Arrows */}
         <div className={styles.arrows}>
           <button onClick={scrollLeft} className={styles.arrowBtn}>
             ←
