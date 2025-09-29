@@ -1,55 +1,53 @@
 .hero {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 60px 8%;
-  gap: 40px;
+  justify-content: space-between;
+  padding: 100px 8% 60px;
+  gap: 60px;
   flex-wrap: wrap;
   position: relative;
   margin-top: 80px;
+  min-height: calc(100vh - 80px);
 }
 
 .left {
   flex: 1;
-  width: 45%;
+  min-width: 400px;
   z-index: 2;
 }
 
 .exploreBtn {
   background: #f1f1ff;
   border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: 10px 20px;
+  border-radius: 25px;
   font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 20px;
+  font-weight: 600;
+  margin-bottom: 24px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   color: #4b56d2;
+  transition: all 0.3s ease;
+}
+
+.exploreBtn:hover {
+  background: #e0e0ff;
+  transform: translateY(-2px);
 }
 
 .exploreBtn .icon {
   font-size: 14px;
   color: #4b56d2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.exploreBtn img {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
 }
 
 .left h1 {
   font-family: "Rubik", sans-serif;
-  font-size: 69px;
+  font-size: 64px;
   font-weight: 700;
-  line-height: 120%;
-  margin-bottom: 15px;
+  line-height: 1.2;
+  margin-bottom: 20px;
 }
 
 .left h1 .travel {
@@ -65,57 +63,40 @@
   color: #000;
 }
 
-.left p {
-  font-size: 16px;
+.subtitle {
+  font-size: 18px;
   color: #666;
-  margin-bottom: 15px;
-  max-width: 420px;
+  margin-bottom: 24px;
+  max-width: 480px;
+  line-height: 1.6;
 }
 
-.decorArrows {
-  position: absolute;
-  bottom: 40px;
-  left: 60px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 3;
-}
-
-.decorArrows img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
+.brandName {
+  font-size: 20px;
+  font-weight: 700;
+  color: #673AB7;
+  letter-spacing: 1px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 2px solid #f1f1ff;
 }
 
 .right {
   flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
   position: relative;
-  width: 55%;
-}
-
-.worldMap {
-  position: absolute;
-  top: -80px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 650px;
-  opacity: 0.55;
-  z-index: 1;
+  min-width: 400px;
 }
 
 .imageLayout {
-  background-image: url("../../assets/image/heroBGImage.png");
-  background-size: contain;
-  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
-  z-index: 2;
-  width: 100%;
-  gap: 30px;
-  padding: 25px;
+  align-items: center;
+  gap: 24px;
+  padding: 20px;
+  position: relative;
 }
 
 .leftCol {
@@ -134,9 +115,15 @@
 
 .imgCard,
 .imgCardTall {
-  border-radius: 15px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.imgCard:hover,
+.imgCardTall:hover {
+  transform: translateY(-5px);
 }
 
 .imgCard img,
@@ -144,173 +131,201 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-.leftCol .imgCard:nth-of-type(1),
-.leftCol .imgCard:nth-of-type(2) {
-  width: 200px;
-  height: 240px;
+.leftCol .imgCard {
+  width: 220px;
+  height: 260px;
 }
 
 .rightCol .imgCardTall {
-  width: 200px;
-  height: 300px;
+  width: 220px;
+  height: 340px;
 }
 
 .iconOverlay {
   position: absolute;
-  left: -15px;
-  top: 43%;
+  left: -18px;
+  top: 50%;
+  transform: translateY(-50%);
   background: #6a0dad;
   color: #fff;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 8px 18px rgba(106, 13, 173, 0.4);
-  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(106, 13, 173, 0.5);
+  z-index: 10;
+  font-size: 18px;
 }
 
 .badge {
   position: absolute;
-  right: -30%;
-  top: 70%;
-  transform: translateY(-50%);
+  right: -35%;
+  top: 65%;
   background: #fff;
   color: #111;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 18px;
   border-radius: 999px;
   white-space: nowrap;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-  z-index: 3;
-}
-
-.userIcon {
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: #fff;
-  color: #6a0dad;
-  display: grid;
-  place-items: center;
-  font-size: 20px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.2);
   z-index: 5;
 }
 
-.userProfileIcon {
-  background-color: #673AB7;
-  opacity: 0.5;
+.userIcon {
   position: absolute;
-  bottom: 2%;
-  padding: 10px;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+  background: #673AB7;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 8px 24px rgba(103, 58, 183, 0.4);
+  z-index: 10;
 }
 
 /* ================== RESPONSIVE ================== */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .hero {
-    flex-direction: column;
-    text-align: center;
+    padding: 120px 6% 60px;
+    gap: 40px;
   }
 
   .left h1 {
-    font-size: 42px;
+    font-size: 52px;
   }
 
-  .left h1 .travel,
-  .left h1 .top,
-  .left h1 .destination,
-  .left h1 .india {
-    font-size: 32px;
+  .left {
+    min-width: 320px;
   }
 
-  .decorArrows {
-    left: 20px;
-    bottom: 20px;
-  }
-
-  .imageLayout {
-    justify-content: center;
-    gap: 12px;      
-    padding: 20px;
-  }
-
-  .badge {
-    right: -40px;
+  .right {
+    min-width: 320px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .hero {
-    padding: 30px 5%;
     flex-direction: column;
+    padding: 100px 5% 40px;
+    margin-top: 70px;
+    min-height: auto;
+    gap: 40px;
   }
 
   .right {
     order: 1;
     width: 100%;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
+    min-width: auto;
   }
 
   .left {
     order: 2;
     text-align: center;
     width: 100%;
+    min-width: auto;
   }
 
   .left h1 {
-    font-size: 28px;
+    font-size: 42px;
   }
 
-  .left h1 .travel,
-  .left h1 .top,
-  .left h1 .destination,
-  .left h1 .india {
-    font-size: 22px;
+  .subtitle {
+    margin: 0 auto 20px;
+    font-size: 16px;
   }
 
-  .left p {
-    font-size: 13px;
-    margin: 0 auto 10px;
+  .brandName {
+    margin-top: 24px;
+    padding-top: 20px;
+    font-size: 18px;
+  }
+
+  .exploreBtn {
+    margin-bottom: 20px;
   }
 
   .imageLayout {
-    flex-direction: row;
-    gap: 8px;       
-    padding: 15px;
-    justify-content: center;
+    gap: 16px;
+    padding: 10px;
   }
 
-  .leftCol .imgCard:nth-of-type(1),
-  .leftCol .imgCard:nth-of-type(2) {
-    width: 150px;
+  .leftCol .imgCard {
+    width: 180px;
+    height: 220px;
+  }
+
+  .rightCol .imgCardTall {
+    width: 180px;
+    height: 300px;
+  }
+
+  .badge {
+    right: -25%;
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 90px 4% 30px;
+    gap: 30px;
+  }
+
+  .left h1 {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .brandName {
+    font-size: 16px;
+    margin-top: 20px;
+    padding-top: 16px;
+  }
+
+  .exploreBtn {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+
+  .imageLayout {
+    gap: 12px;
+  }
+
+  .leftCol .imgCard {
+    width: 140px;
     height: 180px;
   }
 
   .rightCol .imgCardTall {
-    width: 150px;
-    height: 280px;
+    width: 140px;
+    height: 260px;
   }
 
   .iconOverlay {
     left: -12px;
-    bottom: -15px;
-    width: 32px;
-    height: 32px;
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
   }
 
   .userIcon {
-    bottom: -15px;
+    bottom: -18px;
     width: 48px;
     height: 48px;
     font-size: 18px;
@@ -319,140 +334,58 @@
   .badge {
     font-size: 11px;
     padding: 6px 12px;
-    right: -5%;
-  }
-
-  .decorArrows {
-    display: none !important;
+    right: -15%;
   }
 }
 
-/* ================= Small Screens: 350px and below ================= */
-@media (max-width: 350px) {
+@media (max-width: 400px) {
   .hero {
-    padding: 15px 3%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .left {
-    width: 100%;
-  }
-
-  .right {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
+    padding: 80px 3% 20px;
   }
 
   .left h1 {
-    font-size: 20px;
+    font-size: 26px;
   }
 
-  .left h1 .travel,
-  .left h1 .top,
-  .left h1 .destination,
-  .left h1 .india {
-    font-size: 18px;
+  .subtitle {
+    font-size: 13px;
   }
 
-  .left p {
-    font-size: 12px;
-    max-width: 100%;
+  .brandName {
+    font-size: 14px;
   }
 
   .imageLayout {
-    flex-direction: row;
-    flex-wrap: nowrap; /* prevent layout change */
-    justify-content: center;
-    gap: 6px;
-    padding: 5px 0;
-    width: 100%;
+    gap: 10px;
   }
 
-  .leftCol,
-  .rightCol {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
+  .leftCol .imgCard {
+    width: 120px;
+    height: 150px;
   }
 
-  .leftCol .imgCard:nth-of-type(1),
-  .leftCol .imgCard:nth-of-type(2),
   .rightCol .imgCardTall {
-    width: 110px;
-    height: 140px;
+    width: 120px;
+    height: 220px;
   }
 
   .iconOverlay {
-    left: -8px;
-    bottom: -8px;
-    width: 26px;
-    height: 26px;
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+    left: -10px;
   }
 
   .userIcon {
-    bottom: -8px;
-    width: 36px;
-    height: 36px;
-    font-size: 15px;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    bottom: -15px;
   }
 
   .badge {
     font-size: 10px;
-    padding: 3px 8px;
-    right: -5%;
-  }
-}
-
-/* ================= Very Tiny Screens: 302px and below ================= */
-@media (max-width: 302px) {
-  .hero {
-    padding: 12px 3%;
-  }
-
-  .left h1 {
-    font-size: 18px;
-  }
-
-  .left h1 .travel,
-  .left h1 .top,
-  .left h1 .destination,
-  .left h1 .india {
-    font-size: 16px;
-  }
-
-  .left p {
-    font-size: 11px;
-  }
-
-  .leftCol .imgCard:nth-of-type(1),
-  .leftCol .imgCard:nth-of-type(2),
-  .rightCol .imgCardTall {
-    width: 100px;
-    height: 130px;
-  }
-
-  .iconOverlay {
-    left: -6px;
-    bottom: -6px;
-    width: 24px;
-    height: 24px;
-  }
-
-  .userIcon {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-    bottom: -6px;
-  }
-
-  .badge {
-    font-size: 9px;
-    padding: 2px 6px;
+    padding: 5px 10px;
+    right: -10%;
   }
 }
