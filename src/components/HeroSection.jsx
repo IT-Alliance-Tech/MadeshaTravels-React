@@ -15,7 +15,7 @@ export default function HeroSection() {
         <div className={styles.brandName}>
           MADESHA TOURS AND TRAVELS
         </div>
-        
+        <br></br>
         <button className={styles.exploreBtn}>
           <FaSuitcase className={styles.icon} />
           Explore Ultimate India!
