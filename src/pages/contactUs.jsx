@@ -1,55 +1,65 @@
-"use client";
 import React, { useState } from "react";
-import { MapPin,Phone,Mail} from "lucide-react";
-
-import styles from "../styles/contactUs.module.css"
+import { MapPin, Phone, Mail } from "lucide-react";
+import styles from "../styles/contactUs.module.css";
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
-    name: null || "",
-    email: null || "",
-    phone: null || "",
-    message: null || "",
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
   });
-
   const [loading, setLoading] = useState(false);
-    const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setStatus("Submitting...");
+    e.preventDefault();
+    setLoading(true);
+    setStatus("Submitting...");
 
-  try {
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbzTzDDLivc0eYsvcTrisxNglfNBgoJClH_hRJAD2YfIy25VPEbJNmA9yk_ziCM6mpgvLA/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
-    const result = await response.json();
+      const resultText = await response.text();
 
-    if (result.status === "success") {
-      setStatus("Message sent successfully!");
-      setFormData({ name: "", email: "", phone: "", message: "" });
-    } else {
-      setStatus("Something went wrong.");
+      let result;
+      try {
+        result = JSON.parse(resultText);
+      } catch {
+        result = { status: "error" };
+      }
+
+      if (result.status === "success") {
+        setStatus("Message sent successfully!");
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        setStatus("Something went wrong.");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("Error submitting form.");
     }
-  } catch (error) {
-    console.error(error);
-    setStatus("Error submitting form.");
-  }
-};
+
+    setLoading(false);
+  };
 
   return (
     <section className={styles.contactSection}>
       <div className={styles.container}>
-        {/* Left */}
+        {/* Left Info */}
         <div className={styles.left}>
           <h5 className={styles.subTitle}>GET IN TOUCH WITH US</h5>
           <h2 className={styles.title}>
@@ -99,7 +109,7 @@ export default function ContactUs() {
           </div>
         </div>
 
-        {/* Right (Form) */}
+        {/* Right Form */}
         <div className={styles.right}>
           <form className={styles.form} onSubmit={handleSubmit}>
             <label>Your name</label>
@@ -145,11 +155,7 @@ export default function ContactUs() {
               disabled={loading}
             ></textarea>
 
-            <button
-              type="submit"
-              className={styles.submitBtn}
-              disabled={loading}
-            >
+            <button type="submit" className={styles.submitBtn} disabled={loading}>
               {loading ? "Submitting..." : "Submit"}
             </button>
             {status && <p className="mt-4">{status}</p>}

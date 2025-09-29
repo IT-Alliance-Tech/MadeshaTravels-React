@@ -69,7 +69,7 @@ const Header = () => {
 
       {/* Contact button */}
       <div className={styles["contact-button"]}>
-        <Link to="/contact" className={styles["contact-btn"]}>
+        <Link to="/contactUs" className={styles["contact-btn"]}>
           Contact Us
         </Link>
       </div>
