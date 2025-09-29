@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="min-h-screen">
       <Header /> 
-      <div style={{marginTop:"35px"}}classname="mt-4">
+      <div style={{marginTop:"35px"}} className="mt-4">
      <Routes>
 <Route path='/' element={<Home />} />
 <Route path='/contactUs' element={<ContactUs />} />
