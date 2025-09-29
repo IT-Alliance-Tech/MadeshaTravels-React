@@ -13,7 +13,7 @@ export default function HeroSection() {
       {/* Left Side */}
       <div className={styles.left}>
         <div className={styles.brandName}>
-          MADESHA TOURS AND TRAVELS
+          <h4>MADESHA TOURS AND TRAVELS</h4>
         </div>
         <br></br>
         <button className={styles.exploreBtn}>
