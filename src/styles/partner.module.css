@@ -4,10 +4,9 @@
   justify-content: center;
   gap: 40px;
   padding: 60px 8% 10px 8%; /* reduced bottom padding further */
-  margin-bottom: 0; /* ensure no extra margin */
+  margin: 60px 0 0 0; /* ✅ added top margin */
   position: relative;
 }
-
 .left {
   width: 45%;
 }
