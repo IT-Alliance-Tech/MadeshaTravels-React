@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../public/madeshalogo.svg"; // check path
 import styles from "../styles/header.module.css";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 // Nav links configuration
 const navLinks = [
