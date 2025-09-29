@@ -3,15 +3,22 @@
 .destinationSection {
   padding: 60px 6%;
   font-family: "Rubik", sans-serif;
+  position: relative;
 }
 
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* heading left, arrows right */
   align-items: center;
   margin-bottom: 32px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* prevent wrapping in all views */
   gap: 16px;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0; /* heading does not shrink */
 }
 
 .smallHeading {
@@ -33,6 +40,7 @@
 .arrows {
   display: flex;
   gap: 10px;
+  flex-shrink: 0; /* arrows do not shrink */
 }
 
 .arrowBtn,
@@ -45,6 +53,7 @@
   border-radius: 50%;
   cursor: pointer;
   font-size: 18px;
+  flex-shrink: 0; /* ensure arrows never shrink */
   transition: all 0.3s ease;
 }
 
@@ -102,7 +111,7 @@
 
 .cardHeader {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: flex-start;
   margin-bottom: 0;
 }
@@ -127,6 +136,12 @@
   .cardImg {
     height: 260px;
   }
+  .arrowBtn,
+  .arrowBtnActive {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -142,6 +157,21 @@
   .cardImg {
     height: 200px;
   }
+  .arrowBtn,
+  .arrowBtnActive {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 769px) {
+  .arrowBtnActiveMobile {
+    display: none;
+  }
+  .arrowBtnMobile {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -153,18 +183,47 @@
   }
   .cardsWrapper {
     gap: 18px;
+    padding-left: 50px;
   }
   .card {
     flex: 0 0 250px;
   }
-  .cardImg {
-    height: 180px;
+  .arrowBtnMobile {
+    position: absolute;
+    border: none;
+    background: #7b2cbf;
+    color: #fff;
+    top: 50%;
+    left: 1%;
+    z-index: 999;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
   }
-  
-  /* ✅ Keep heading and arrows side by side */
-  .header {
-    flex-wrap: nowrap;
-    gap: 10px;
+  .arrowBtnActiveMobile {
+    border: none;
+    background: #7b2cbf;
+    position: absolute;
+    right: 1%;
+    top: 50%;
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+  .arrowBtn {
+    display: none;
+  }
+  .arrowBtnActive {
+    display: none;
   }
 }
 
@@ -184,12 +243,10 @@
   .cardHeader h3 {
     font-size: 14px;
   }
-
-  /* Change arrows layout for mobile view */
-  .arrows {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 0;
+  .arrowBtn,
+  .arrowBtnActive {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
   }
 }

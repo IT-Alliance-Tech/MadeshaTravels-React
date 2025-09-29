@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 
-// ✅ Import images
 import test1 from "../../public/test2.png";
 import test2 from "../../public/test1.png";
 import test3 from "../../public/test.png";
 import test4 from "../../public/5.png";
 
-// ✅ Import CSS Module
 import styles from "../styles/testimonialsSection.module.css";
 
 const testimonials = [
@@ -52,7 +50,6 @@ export default function Testimonialssection() {
     setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
 
-  // Auto-slide every 5 sec
   useEffect(() => {
     const interval = setInterval(() => {
       nextTestimonial();
@@ -84,25 +81,25 @@ export default function Testimonialssection() {
         </div>
 
         <p className={styles.review}>“{testimonials[current].review}”</p>
+      </div>
 
-        {/* Arrows */}
-        <button className={`${styles.arrow} ${styles.left}`} onClick={prevTestimonial}>
-          ←
-        </button>
-        <button className={`${styles.arrow} ${styles.right}`} onClick={nextTestimonial}>
-          →
-        </button>
+      {/* Arrows outside testimonial-content */}
+      <button className={`${styles.arrow} ${styles.left}`} onClick={prevTestimonial}>
+        ←
+      </button>
+      <button className={`${styles.arrow} ${styles.right}`} onClick={nextTestimonial}>
+        →
+      </button>
 
-        {/* Dots */}
-        <div className={styles.dots}>
-          {testimonials.map((_, index) => (
-            <span
-              key={index}
-              className={`${styles.dot} ${index === current ? styles.active : ""}`}
-              onClick={() => setCurrent(index)}
-            ></span>
-          ))}
-        </div>
+      {/* Dots */}
+      <div className={styles.dots}>
+        {testimonials.map((_, index) => (
+          <span
+            key={index}
+            className={`${styles.dot} ${index === current ? styles.active : ""}`}
+            onClick={() => setCurrent(index)}
+          ></span>
+        ))}
       </div>
     </section>
   );

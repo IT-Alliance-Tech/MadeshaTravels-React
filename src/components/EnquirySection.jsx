@@ -136,6 +136,7 @@ export default function EnquiryForm() {
             onChange={handleChange}
             className={styles.input}
             disabled={loading} // Disable during loading
+            required
           />
           <input
             type="text"
@@ -145,6 +146,7 @@ export default function EnquiryForm() {
             onChange={handleChange}
             className={styles.input}
             disabled={loading}
+            required
           />
           <input
             type="email"
@@ -154,6 +156,7 @@ export default function EnquiryForm() {
             onChange={handleChange}
             className={styles.input}
             disabled={loading}
+            required
           />
           <textarea
             placeholder={`Hello, I am interested in booking a\nhotel....`}
