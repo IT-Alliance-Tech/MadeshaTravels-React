@@ -147,3 +147,28 @@
     border-radius: 35px;
   }
 }
+
+/* Remove focus outline on buttons and links */
+.nav ul li .nav-btn:focus,
+.nav ul li .nav-btn:active {
+  outline: none;
+}
+
+.logo button:focus,
+.logo button:active {
+  outline: none;
+}
+
+.contact-btn:focus,
+.contact-btn:active {
+  outline: none;
+}
+
+/* Optional: Add custom focus style for accessibility (keyboard users) */
+.nav ul li .nav-btn:focus-visible,
+.logo button:focus-visible,
+.contact-btn:focus-visible {
+  outline: 2px solid #6a0dad;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
