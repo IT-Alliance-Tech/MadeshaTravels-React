@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 8% 60px;  /* Reduced top padding */
+  padding: 100px 8% 60px;  /* Changed from 120px */
   gap: 60px;
   flex-wrap: wrap;
   position: relative;
@@ -195,12 +195,9 @@
 }
 
 /* ================== RESPONSIVE ================== */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .hero {
-    flex-direction: column;
-    padding: 30px 5% 40px;  /* Reduced from 100px */
-    margin-top: 70px;
-    min-height: auto;
+    padding: 120px 6% 60px;
     gap: 40px;
   }
 
