@@ -20,7 +20,7 @@ export default function Footer() {
         { name: "Services", id: "services" },
         { name: "Discover", id: "discover" },
         { name: "Gallery", id: "gallery" },
-        { name: "Testimonials", id: "testimonials" },
+        { name: "Reviews", id: "testimonials" },
       ],
     },
     {
