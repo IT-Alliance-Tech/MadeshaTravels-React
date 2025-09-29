@@ -34,7 +34,6 @@ export default function DiscoverSection() {
 
   return (
     <section id="discover" className={styles.destinationSection}>
-      {/* Header */}
       <div className={styles.header}>
         {/* Left Side: Heading */}
         <div className={styles.headerLeft}>
