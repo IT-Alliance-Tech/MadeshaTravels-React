@@ -195,11 +195,15 @@
 }
 
 /* ================== RESPONSIVE ================== */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .hero {
-    padding: 120px 6% 60px;
+    flex-direction: column;
+    padding: 30px 5% 40px;  /* Reduced from 100px */
+    margin-top: 70px;
+    min-height: auto;
     gap: 40px;
   }
+}
 
   .left h1 {
     font-size: 52px;
