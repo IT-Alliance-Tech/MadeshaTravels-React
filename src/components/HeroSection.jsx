@@ -12,6 +12,10 @@ export default function HeroSection() {
     <section id="home" className={styles.hero}>
       {/* Left Side */}
       <div className={styles.left}>
+        <div className={styles.brandName}>
+          MADESHA TOURS AND TRAVELS
+        </div>
+        
         <button className={styles.exploreBtn}>
           <FaSuitcase className={styles.icon} />
           Explore Ultimate India!
@@ -27,10 +31,6 @@ export default function HeroSection() {
         <p className={styles.subtitle}>
           We always make our customers happy by providing as many choices as possible
         </p>
-        
-        <div className={styles.brandName}>
-          MADESHA TOURS AND TRAVELS
-        </div>
       </div>
 
       {/* Right Side */}
