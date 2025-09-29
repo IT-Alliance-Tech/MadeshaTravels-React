@@ -22,7 +22,6 @@ export default function ContactUs() {
     setStatus("");
 
     try {
-      // Build FormData instead of JSON (no CORS preflight)
       const form = new FormData();
       form.append("name", formData.name);
       form.append("email", formData.email);
@@ -33,7 +32,7 @@ export default function ContactUs() {
         "https://script.google.com/macros/s/AKfycbxRdevDCDN-65c3UERlyegPXyQ18muqfisDhGX4vlt74N4lrKFoKhRBYHoPY6YhZilUPA/exec",
         {
           method: "POST",
-          body: form, // 👈 No headers → avoids preflight → no CORS error
+          body: form,
         }
       );
 
@@ -111,7 +110,7 @@ export default function ContactUs() {
             <input
               type="text"
               name="name"
-              placeholder="Abc"
+              placeholder="Enter your full name"
               value={formData.name}
               onChange={handleChange}
               required
@@ -122,7 +121,7 @@ export default function ContactUs() {
             <input
               type="email"
               name="email"
-              placeholder="Abc@def.com"
+              placeholder="youremail@example.com"
               value={formData.email}
               onChange={handleChange}
               required
@@ -133,7 +132,7 @@ export default function ContactUs() {
             <input
               type="text"
               name="phone"
-              placeholder="This is optional"
+              placeholder="+91 XXXXX XXXXX (Optional)"
               value={formData.phone}
               onChange={handleChange}
               disabled={loading}
@@ -142,7 +141,7 @@ export default function ContactUs() {
             <label>Message</label>
             <textarea
               name="message"
-              placeholder="Hi I’d like to ask about"
+              placeholder="How can we help you?"
               rows={4}
               value={formData.message}
               onChange={handleChange}
@@ -157,7 +156,7 @@ export default function ContactUs() {
             >
               {loading ? "Submitting..." : "Submit"}
             </button>
-            {status && <p className="mt-4">{status}</p>}
+            {status && <p className={styles.statusMessage}>{status}</p>}
           </form>
         </div>
       </div>
