@@ -1,0 +1,146 @@
+.whyUsSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px; /* unchanged */
+  padding: 60px 8% 20px 8%; /* bottom padding reduced to 20px */
+  margin-bottom: 0; /* remove extra space */
+  /* font-family: "Inter", sans-serif; */
+}
+
+.imageContainer {
+  width: 100%;
+  max-width: 550px;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: 45px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.content {
+  flex: 1;
+  max-width: 45%;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #6a0dad;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.heading {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 15px; /* slightly reduced */
+  color: #222;
+  line-height: 1.3;
+}
+
+.heading .break {
+  display: block;
+}
+
+.list {
+  font-weight: bold;
+  color: #19182580;
+  padding: 0;
+  margin: 0 0 10px; /* reduced from 15px */
+}
+
+.points {
+  font-weight: 400;
+}
+
+.listItem {
+  margin-bottom: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.number {
+  color: #191825;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.listItem strong {
+  color: #191825;
+}
+
+/* -------------------- */
+/* 📱 Responsive Styles */
+/* -------------------- */
+@media (max-width: 1024px) {
+  .whyUsSection {
+    gap: 30px;
+    padding: 50px 6% 15px 6%; /* reduced bottom padding */
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .whyUsSection {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 5% 5px 5%; /* minimal bottom padding */
+    margin-bottom: 0;
+  }
+
+  .imageContainer {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .image {
+    margin: 0 auto 10px; /* reduced from 15px */
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+  }
+
+  .content {
+    max-width: 100%;
+    margin-top: 0;
+    padding: 10px;
+  }
+
+  .subtitle {
+    margin-bottom: 8px;
+  }
+
+  .heading {
+    font-size: 22px;
+    margin-bottom: 10px; /* reduced */
+  }
+
+  .listItem {
+    justify-content: flex-start;
+    text-align: left;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .listItem {
+    font-size: 13px;
+  }
+
+  .whyUsSection {
+    padding-bottom: 5px; /* tiny space */
+  }
+}

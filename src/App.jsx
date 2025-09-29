@@ -1,22 +1,29 @@
-import Header from './components/Header';
-import HeroSection from './components/HeroSection';
-import ServicesSection from './components/ServicesSection';
-import DiscoverSection from './components/DiscoverSection';
-import GallerySection from './components/GallerySection';
-import TestimonialsSection from './components/TestimonialsSection';
-import EnquirySection from './components/EnquirySection';
-import Footer from './components/Footer';
+import Footer from './components/footer';
+import { Route, Routes } from 'react-router-dom';
+import Home from './pages/home';
+import ContactUs from './pages/contactUs';
+import ServiceDetails from './pages/serviceDetails';
+import Faq from './pages/faq';
+import Header from './components/header';
+import WhyUs from './pages/whyUs';
+import PartnerSection from './pages/partner';
 
 function App() {
   return (
     <div className="min-h-screen">
-      <Header />
-      <HeroSection />
-      <ServicesSection />
-      <DiscoverSection />
-      <GallerySection />
-      <TestimonialsSection />
-      <EnquirySection />
+      <Header /> 
+      <div style={{marginTop:"35px"}}classname="mt-4">
+     <Routes>
+<Route path='/' element={<Home />} />
+<Route path='/contactUs' element={<ContactUs />} />
+<Route path="/services/:id" element={<ServiceDetails />} />
+<Route path='/serviceDetails' element={<ServiceDetails />} />
+<Route path='/faq' element={<Faq /> }/>
+<Route path='/whyUs' element={<WhyUs /> }/>
+<Route path='/partner' element={<PartnerSection /> }/>
+
+   </Routes> 
+   </div>
       <Footer />
     </div>
   );

@@ -1,0 +1,195 @@
+/* ================= DESTINATION SECTION ================= */
+
+.destinationSection {
+  padding: 60px 6%;
+  font-family: "Rubik", sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.smallHeading {
+  font-size: 14px;
+  font-weight: 500;
+  color: #7b2cbf;
+  margin-bottom: 6px;
+}
+
+.mainHeading {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  color: #222;
+}
+
+/* ================= ARROWS ================= */
+
+.arrows {
+  display: flex;
+  gap: 10px;
+}
+
+.arrowBtn,
+.arrowBtnActive {
+  border: none;
+  background: #7b2cbf;
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.arrowBtn:hover,
+.arrowBtnActive:hover {
+  transform: scale(1.05);
+}
+
+/* ================= CARDS WRAPPER ================= */
+
+.cardsWrapper {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 20px 0;
+  scrollbar-width: none;
+}
+
+.cardsWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  flex: 0 0 320px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.cardImg {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+/* ================= CARD CONTENT ================= */
+
+.cardContent {
+  padding: 20px 16px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0;
+}
+
+.cardHeader h3 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+  color: #222;
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+
+@media (min-width: 1200px) {
+  .mainHeading {
+    font-size: 32px;
+  }
+  .card {
+    flex: 0 0 340px;
+  }
+  .cardImg {
+    height: 260px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .destinationSection {
+    padding: 50px 5%;
+  }
+  .mainHeading {
+    font-size: 26px;
+  }
+  .card {
+    flex: 0 0 280px;
+  }
+  .cardImg {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .destinationSection {
+    padding: 40px 4%;
+  }
+  .mainHeading {
+    font-size: 24px;
+  }
+  .cardsWrapper {
+    gap: 18px;
+  }
+  .card {
+    flex: 0 0 250px;
+  }
+  .cardImg {
+    height: 180px;
+  }
+  
+  /* ✅ Keep heading and arrows side by side */
+  .header {
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .destinationSection {
+    padding: 30px 16px;
+  }
+  .mainHeading {
+    font-size: 20px;
+  }
+  .cardsWrapper {
+    gap: 14px;
+  }
+  .card {
+    flex: 0 0 220px;
+  }
+  .cardHeader h3 {
+    font-size: 14px;
+  }
+
+  /* Change arrows layout for mobile view */
+  .arrows {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 0;
+  }
+}

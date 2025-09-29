@@ -1,122 +1,155 @@
-import { useState } from 'react';
+"use client";
 
-const EnquirySection = () => {
+import React, { useState } from "react";
+import styles from "../styles/enquirySection.module.css";
+
+export default function EnquiryForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    message: 'Hello, I am interested in booking a hotel...'
+    name: null,
+    interested: null,
+    email: null,
+    phone: null,
   });
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const [loading, setLoading] = useState(false); // Loading state
+  const [status, setStatus] = useState("");
+
+  const handleSubmit = async (e) => {
+    // e.preventDefault();
+
+    // // Start loading
+    // setLoading(true);
+
+    // const formDataToSend = new FormData();
+    // formDataToSend.append("name", formData.name);
+    // formDataToSend.append("phone", formData.phone);
+    // formDataToSend.append("email", formData.email);
+    // formDataToSend.append("interested", formData.interested);
+
+    // try {
+    //   const response = await fetch(
+    //     "https://script.google.com/macros/s/AKfycbxJpcSgmsC3pfFKiMlGVSJR8XUCT9osXF7i98Q3Xn03nfUC9Yp2UjYABj7fmgsm6VA/exec",
+    //     {
+    //       method: "POST",
+    //       body: formDataToSend,
+    //     }
+    //   );
+
+    //   if (!response.ok) throw new Error("Network response was not ok");
+
+    //   // Wait for 3 seconds before clearing
+    //   setTimeout(() => {
+    //     alert("Enquiry submitted successfully!");
+    //     setFormData({
+    //       name: "",
+    //       interested: "",
+    //       email: "",
+    //       phone: "",
+    //     });
+    //     setLoading(false);
+    //   }, 3000);
+    // } catch (error) {
+    //   console.error("Fetch error:", error);
+    //   alert("Something went wrong!");
+    //   setLoading(false);
+    // }
+
+    e.preventDefault();
+    setStatus("Submitting...");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        setStatus("Message sent successfully!");
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        setStatus("Something went wrong.");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("Error submitting form.");
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add form submission logic here
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  console.log(formData);
 
   return (
-    <section id="contact" className="py-16 lg:py-20 bg-gradient-to-br from-purple-50 to-blue-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left side - Enquiry Form */}
-          <div className="bg-white rounded-3xl shadow-2xl p-6 lg:p-12">
-            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6 lg:mb-8 text-center">ENQUIRY</h2>
-            
-            <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 lg:py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all text-sm lg:text-base"
-                  required
-                />
-              </div>
-              
-              <div>
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 lg:py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all text-sm lg:text-base"
-                  required
-                />
-              </div>
-              
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 lg:py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all text-sm lg:text-base"
-                  required
-                />
-              </div>
-              
-              <div>
-                <textarea
-                  name="message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 lg:py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all resize-none text-sm lg:text-base"
-                  required
-                />
-              </div>
-              
-              <button
-                type="submit"
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 lg:py-4 rounded-xl transition-colors duration-200 transform hover:scale-105 text-sm lg:text-base"
-              >
-                SUBMIT
-              </button>
-            </form>
-          </div>
+    <section className={styles.enquirySection}>
+      <div className={styles.formCard}>
+        <h3 className={styles.formTitle}>ENQUIRY</h3>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className={styles.input}
+            disabled={loading} // Disable during loading
+          />
+          <input
+            type="text"
+            placeholder="Phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className={styles.input}
+            disabled={loading}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className={styles.input}
+            disabled={loading}
+          />
+          <textarea
+            placeholder={`Hello, I am interested in booking a\nhotel....`}
+            className={styles.textarea}
+            onChange={handleChange}
+            name="interested"
+            value={formData.interested}
+            disabled={loading}
+          ></textarea>
+          <p className={styles.terms}>
+            {/* By submitting this form I agree to <a href="#">Terms of Use</a> */}
+          </p>
+          <button
+            type="submit"
+            className={styles.submitBtn}
+            disabled={loading} // Disable button during loading
+          >
+            {loading ? "Submitting..." : "Submit"}
+          </button>
+          {status && <p className="mt-4">{status}</p>}
+        </form>
+      </div>
 
-          {/* Right side - Registration CTA */}
-          <div className="text-center lg:text-left space-y-6 lg:space-y-8">
-            <div className="inline-block">
-              <span className="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold tracking-wide uppercase">
-                Enquire Now
-              </span>
-            </div>
-            
-            <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 leading-tight">
-              Register now to get
-              <br />
-              <span className="text-blue-500">started with ease.</span>
-            </h2>
-            
-            <div className="pt-4 lg:pt-8">
-              <div className="inline-flex items-center space-x-4">
-                <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-lg lg:text-xl">→</span>
-                </div>
-                <div className="text-left">
-                  <p className="text-gray-600 text-base lg:text-lg">
-                    Start your journey with us today
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className={styles.textContent}>
+        <h5 className={styles.smallHeading} style={{ textAlign: "right" }}>
+          ENQUIRE NOW
+        </h5>
+        <h2 className={styles.mainHeading} style={{ textAlign: "right" }}>
+          Register now to get
+          <br />
+          <span className={styles.indentedLine}>started with ease.</span>
+        </h2>
       </div>
     </section>
   );
-};
-
-export default EnquirySection;
+}
