@@ -1,3 +1,15 @@
+/* ================= HERO SECTION BRANDING ================= */
+.branding {
+  font-size: 2rem;       /* larger desktop size */
+  font-weight: 700;      /* bolder for brand emphasis */
+  color: #673AB7;        /* same as top destination text color */
+  margin-bottom: 12px;   /* space below heading before button */
+  position: relative;
+  top: -15px;            /* moves heading slightly upwards */
+  text-align: left;
+}
+
+/* ================= HERO SECTION ================= */
 .hero {
   display: flex;
   align-items: center;

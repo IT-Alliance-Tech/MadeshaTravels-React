@@ -8,7 +8,7 @@ import test4 from "../../public/5.png";
 
 import styles from "../styles/testimonialsSection.module.css";
 
-const testimonials = [
+const happyCustomers = [
   {
     img: test1,
     name: "Smitha",
@@ -39,39 +39,39 @@ const testimonials = [
   },
 ];
 
-export default function Testimonialssection() {
+export default function ReviewsSection() {
   const [current, setCurrent] = useState(0);
 
-  const prevTestimonial = () => {
-    setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  const prevCustomer = () => {
+    setCurrent((prev) => (prev === 0 ? happyCustomers.length - 1 : prev - 1));
   };
 
-  const nextTestimonial = () => {
-    setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  const nextCustomer = () => {
+    setCurrent((prev) => (prev === happyCustomers.length - 1 ? 0 : prev + 1));
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      nextTestimonial();
+      nextCustomer();
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section id="testimonials" className={styles.testimonials}>
-      <h4 className={styles.subtitle}>TESTIMONIALS</h4>
-      <h2 className={styles.title}>Trust our clients</h2>
+    <section id="reviews" className={styles.testimonials}>
+      <h4 className={styles.subtitle}>REVIEWS</h4>
+      <h2 className={styles.title}>What our customers say</h2>
 
       <div className={`${styles["testimonial-content"]} ${styles.fade}`}>
         <img
-          src={testimonials[current].img}
-          alt={testimonials[current].name}
+          src={happyCustomers[current].img}
+          alt={happyCustomers[current].name}
           className={styles["testimonial-img"]}
         />
 
         <h3 className={styles.name}>
-          {testimonials[current].name}{" "}
-          <span className={styles.role}>/ {testimonials[current].role}</span>
+          {happyCustomers[current].name}{" "}
+          <span className={styles.role}>/ {happyCustomers[current].role}</span>
         </h3>
 
         <div className={styles.stars}>
@@ -80,20 +80,20 @@ export default function Testimonialssection() {
           ))}
         </div>
 
-        <p className={styles.review}>“{testimonials[current].review}”</p>
+        <p className={styles.review}>“{happyCustomers[current].review}”</p>
       </div>
 
-      {/* Arrows outside testimonial-content */}
-      <button className={`${styles.arrow} ${styles.left}`} onClick={prevTestimonial}>
+      {/* Arrows */}
+      <button className={`${styles.arrow} ${styles.left}`} onClick={prevCustomer}>
         ←
       </button>
-      <button className={`${styles.arrow} ${styles.right}`} onClick={nextTestimonial}>
+      <button className={`${styles.arrow} ${styles.right}`} onClick={nextCustomer}>
         →
       </button>
 
       {/* Dots */}
       <div className={styles.dots}>
-        {testimonials.map((_, index) => (
+        {happyCustomers.map((_, index) => (
           <span
             key={index}
             className={`${styles.dot} ${index === current ? styles.active : ""}`}

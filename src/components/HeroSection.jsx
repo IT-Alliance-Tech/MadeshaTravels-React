@@ -7,22 +7,28 @@ import hillImg from "../../public/hero1.png";
 import gatewayImg from "../../public/hero2.png";
 import tajmahalImg from "../../public/nature1.png";
 
-
 export default function HeroSection() {
   return (
     <section id="top-destination" className={styles.hero}>
       {/* Left Side */}
       <div className={styles.left}>
+        {/* Branding Heading */}
+        <h2 className={styles.branding}>Mahadesha Tours and Travelers</h2>
+
+        {/* Explore Button */}
         <button className={styles.exploreBtn}>
           Explore Ultimate India!
           <FaSuitcase />
         </button>
+
+        {/* Main Heading */}
         <h1 className={styles.heading}>
           <span className={styles.travel}>Travel</span>{" "}
           <span className={styles.top}>top</span>{" "}
           <span className={styles.destination}>destination</span>{" "}
           <span className={styles.india}>of India</span>
         </h1>
+
         <p>
           We always make our customer happy by providing as many choices as
           possible
@@ -51,12 +57,10 @@ export default function HeroSection() {
               <img src={gatewayImg} alt="Gateway of India" />
               <span className={styles.badge}>Top Places</span>
             </div>
-             <FaUserPlus />
+            <FaUserPlus />
           </div>
         </div>
       </div>
-
-      
     </section>
   );
 }

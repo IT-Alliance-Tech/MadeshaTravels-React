@@ -61,6 +61,8 @@
 .contact-button {
   display: flex;
   align-items: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0; /* prevent shrinking */
 }
 
 .contact-btn {
@@ -73,10 +75,20 @@
   border: none;
   cursor: pointer;
   transition: 0.3s ease;
+
+  white-space: nowrap; /* prevent text wrapping */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contact-btn:hover {
   background: #520c9c;
+}
+
+/* Home page mobile adjustment */
+.home-mobile-adjust {
+  transform: translateX(0); /* default, no shift */
 }
 
 /* ---------------- RESPONSIVE ---------------- */
@@ -130,6 +142,11 @@
     font-size: 14px;
     border-radius: 40px;
   }
+
+  /* Shift button left on home page */
+  .home-mobile-adjust {
+    transform: translateX(-20px);
+  }
 }
 
 @media (max-width: 480px) {
@@ -145,5 +162,9 @@
     padding: 6px 14px;
     font-size: 13px;
     border-radius: 35px;
+  }
+
+  .home-mobile-adjust {
+    transform: translateX(-15px);
   }
 }

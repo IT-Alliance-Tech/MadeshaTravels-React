@@ -9,7 +9,7 @@ const navLinks = [
   { name: "Services", id: "services" },
   { name: "Discover", id: "discover" },
   { name: "Gallery", id: "gallery" },
-  { name: "Testimonials", id: "testimonials" },
+  { name: "Reviews", id: "reviews" }, // updated link
 ];
 
 const Header = () => {
@@ -24,7 +24,6 @@ const Header = () => {
 
     const section = document.getElementById(id);
     if (section) {
-      // Adjust offset depending on header height
       const headerOffset = document.querySelector(`.${styles.header}`).offsetHeight;
       const elementPosition = section.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -68,7 +67,11 @@ const Header = () => {
       </nav>
 
       {/* Contact button */}
-      <div className={styles["contact-button"]}>
+      <div
+        className={`${styles["contact-button"]} ${
+          window.location.pathname === "/" ? styles["home-mobile-adjust"] : ""
+        }`}
+      >
         <Link to="/contactUs" className={styles["contact-btn"]}>
           Contact Us
         </Link>
