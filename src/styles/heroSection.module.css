@@ -1,13 +1,12 @@
 .hero {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 120px 8% 60px;
-  gap: 60px;
+  justify-content: center;
+  padding: 60px 8%;
+  gap: 40px;
   flex-wrap: wrap;
   position: relative;
   margin-top: 80px;
-  min-height: calc(100vh - 80px);
 }
 
 .brandName {
