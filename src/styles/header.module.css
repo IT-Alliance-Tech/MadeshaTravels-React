@@ -85,6 +85,8 @@
 .contact-button {
   display: flex;
   align-items: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0; /* prevent shrinking */
 }
 
 .contact-btn {
@@ -276,6 +278,11 @@
 
   .overlay {
     display: block;
+  }
+
+  /* Shift button left on home page */
+  .home-mobile-adjust {
+    transform: translateX(-20px);
   }
 }
 

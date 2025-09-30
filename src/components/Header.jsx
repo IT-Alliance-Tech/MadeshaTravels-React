@@ -98,8 +98,12 @@ const Header = () => {
         </ul>
       </nav>
 
-      {/* Desktop Contact button */}
-      <div className={styles["contact-button"]}>
+      {/* Contact button */}
+      <div
+        className={`${styles["contact-button"]} ${
+          window.location.pathname === "/" ? styles["home-mobile-adjust"] : ""
+        }`}
+      >
         <Link to="/contactUs" className={styles["contact-btn"]}>
           Contact Us
         </Link>

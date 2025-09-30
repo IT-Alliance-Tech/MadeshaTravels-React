@@ -225,6 +225,14 @@
   .arrowBtnActive {
     display: none;
   }
+  .header {
+    display: block;
+  }
+  .headerLeft {
+    display: block;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
