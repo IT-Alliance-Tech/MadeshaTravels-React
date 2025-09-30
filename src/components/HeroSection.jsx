@@ -15,19 +15,19 @@ export default function HeroSection() {
         <div className={styles.brandName}>
           <h1>MADESHA TOURS AND TRAVELS</h1>
         </div>
-        <br></br>
+        <br />
         <button className={styles.exploreBtn}>
           <FaSuitcase className={styles.icon} />
           Explore Ultimate India!
         </button>
-        
+
         <h1 className={styles.heading}>
           <span className={styles.travel}>Travel</span>{" "}
           <span className={styles.top}>top</span>{" "}
           <span className={styles.destination}>destination</span>{" "}
           <span className={styles.india}>of India</span>
         </h1>
-        
+
         <p className={styles.subtitle}>
           We always make our customers happy by providing as many choices as possible
         </p>
@@ -40,12 +40,13 @@ export default function HeroSection() {
           <div className={styles.leftCol}>
             <div className={styles.imgCard}>
               <img src={hillImg} alt="Hill Station" />
-              <div className={styles.iconOverlay}>
-                <FaPaperPlane />
-              </div>
             </div>
             <div className={styles.imgCard}>
               <img src={tajmahalImg} alt="Taj Mahal" />
+            </div>
+            {/* Static plane icon outside the card */}
+            <div className={styles.iconOverlay}>
+              <FaPaperPlane />
             </div>
           </div>
 
@@ -53,10 +54,11 @@ export default function HeroSection() {
           <div className={styles.rightCol}>
             <div className={styles.imgCardTall}>
               <img src={gatewayImg} alt="Gateway of India" />
-              <span className={styles.badge}>Top Places</span>
-              <div className={styles.userIcon}>
-                <FaUserPlus />
-              </div>
+            </div>
+            {/* Static overlays outside the card */}
+            <span className={styles.badge}>Top Places</span>
+            <div className={styles.userIcon}>
+              <FaUserPlus />
             </div>
           </div>
         </div>
