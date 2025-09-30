@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/partner.module.css";
 
 // ✅ Import images from assets folder (not public in React)
 import hillImg from "../../public/partner1.png";
 import gatewayImg from "../../public/partner3.png";
 import tajmahalImg from "../../public/partner2.png";
+import { useLocation } from "react-router-dom";
 
 export default function PartnerSection() {
   const features = {
@@ -17,6 +18,17 @@ export default function PartnerSection() {
       "Tour Operators: Partner with us for group tours and package inclusions.",
     ],
   };
+    const { pathname } = useLocation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, 0);
+  }, [pathname]);
 
   return (
     <section className={styles.hero}>

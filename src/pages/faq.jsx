@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import palaceImg from "../../public/faq.png"; // Make sure this path is correct
 import styles from"../styles/faq.module.css"
+import { useLocation } from "react-router-dom";
 
 const faqs = [
   {
@@ -31,6 +32,17 @@ const faqs = [
 
 export default function FaqSection() {
   const [activeIndex, setActiveIndex] = useState(null);
+    const { pathname } = useLocation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, 0);
+  }, [pathname]);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
