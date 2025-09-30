@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "../styles/whyUs.module.css";
 import hampiImg from "../../public/hampi.png"; // ✅ put hampi.png inside src/assets/
+import { useLocation } from "react-router-dom";
 
 const whyUsPoints = [
   {
@@ -30,14 +31,18 @@ const whyUsPoints = [
 ];
 
 export default function WhyUs() {
-  // Scroll to top when the component is mounted
+
+  const { pathname } = useLocation();
+
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth", // optional for smooth scrolling
-    });
-  }, []);
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, 0);
+  }, [pathname]);
 
   return (
     <section className={styles.whyUsSection}>

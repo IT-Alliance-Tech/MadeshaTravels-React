@@ -14,7 +14,7 @@ export default function ServiceDetails() {
 
   // Scroll to top when component mounts or serviceParam changes
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [serviceParam]);
 
   let content;
