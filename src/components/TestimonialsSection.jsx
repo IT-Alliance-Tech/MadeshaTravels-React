@@ -4,7 +4,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 
 import styles from "../styles/testimonialsSection.module.css";
 
-const testimonials = [
+const happyCustomers = [
   {
     name: "Smitha",
     role: "Travel Enthusiast",
@@ -31,20 +31,20 @@ const testimonials = [
   },
 ];
 
-export default function Testimonialssection() {
+export default function ReviewsSection() {
   const [current, setCurrent] = useState(0);
 
-  const prevTestimonial = () => {
-    setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  const prevCustomer = () => {
+    setCurrent((prev) => (prev === 0 ? happyCustomers.length - 1 : prev - 1));
   };
 
-  const nextTestimonial = () => {
-    setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  const nextCustomer = () => {
+    setCurrent((prev) => (prev === happyCustomers.length - 1 ? 0 : prev + 1));
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      nextTestimonial();
+      nextCustomer();
     }, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -58,11 +58,11 @@ export default function Testimonialssection() {
           <FaQuoteLeft />
         </div>
 
-        <p className={styles.review}>"{testimonials[current].review}"</p>
+        <p className={styles.review}>"{happyCustomers[current].review}"</p>
 
         <div className={styles["client-info"]}>
-          <h3 className={styles.name}>{testimonials[current].name}</h3>
-          <p className={styles.role}>{testimonials[current].role}</p>
+          <h3 className={styles.name}>{happyCustomers[current].name}</h3>
+          <p className={styles.role}>{happyCustomers[current].role}</p>
         </div>
 
         <div className={styles.stars}>
@@ -72,17 +72,17 @@ export default function Testimonialssection() {
         </div>
       </div>
 
-      {/* Arrows outside testimonial-content */}
-      <button className={`${styles.arrow} ${styles.left}`} onClick={prevTestimonial}>
+      {/* Arrows */}
+      <button className={`${styles.arrow} ${styles.left}`} onClick={prevCustomer}>
         ←
       </button>
-      <button className={`${styles.arrow} ${styles.right}`} onClick={nextTestimonial}>
+      <button className={`${styles.arrow} ${styles.right}`} onClick={nextCustomer}>
         →
       </button>
 
       {/* Dots */}
       <div className={styles.dots}>
-        {testimonials.map((_, index) => (
+        {happyCustomers.map((_, index) => (
           <span
             key={index}
             className={`${styles.dot} ${index === current ? styles.active : ""}`}
