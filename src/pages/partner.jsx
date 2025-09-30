@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/partner.module.css";
 
 // ✅ Import images from assets folder (not public in React)
@@ -17,6 +17,15 @@ export default function PartnerSection() {
       "Tour Operators: Partner with us for group tours and package inclusions.",
     ],
   };
+
+  // Scroll to top when the component is mounted
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth", // optional for smooth scrolling
+    });
+  }, []);
 
   return (
     <section className={styles.hero}>

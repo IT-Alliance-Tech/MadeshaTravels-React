@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import palaceImg from "../../public/faq.png"; // Make sure this path is correct
-import styles from"../styles/faq.module.css"
+import styles from "../styles/faq.module.css";
 
 const faqs = [
   {
@@ -32,9 +32,18 @@ const faqs = [
 export default function FaqSection() {
   const [activeIndex, setActiveIndex] = useState(null);
 
+  // Scroll to top when the component is mounted
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth", // Optional: smooth scrolling
+    });
+  }, []);
+
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
-    console.log(index,activeIndex)
+    console.log(index, activeIndex);
   };
 
   return (
@@ -57,12 +66,11 @@ export default function FaqSection() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className={`${styles.faqItem } ${activeIndex === index ? styles.active: ""}`}
+              className={`${styles.faqItem} ${activeIndex === index ? styles.active : ""}`}
             >
               <button
                 className={styles.faqQuestion}
                 onClick={() => toggleFAQ(index)}
-
               >
                 {faq.question}
                 <span className={styles.arrow}>▼</span>

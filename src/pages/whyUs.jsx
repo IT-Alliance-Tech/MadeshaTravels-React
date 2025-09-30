@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/whyUs.module.css";
 import hampiImg from "../../public/hampi.png"; // ✅ put hampi.png inside src/assets/
 
@@ -30,6 +30,15 @@ const whyUsPoints = [
 ];
 
 export default function WhyUs() {
+  // Scroll to top when the component is mounted
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth", // optional for smooth scrolling
+    });
+  }, []);
+
   return (
     <section className={styles.whyUsSection}>
       {/* Left Image */}
