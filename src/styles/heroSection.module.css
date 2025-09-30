@@ -1,11 +1,11 @@
 /* ================= HERO SECTION BRANDING ================= */
 .branding {
-  font-size: 2rem;       /* larger desktop size */
-  font-weight: 700;      /* bolder for brand emphasis */
-  color: #673AB7;        /* same as top destination text color */
-  margin-bottom: 12px;   /* space below heading before button */
+  font-size: 2rem;
+  font-weight: 700;
+  color: #673AB7;
+  margin-bottom: 12px;
   position: relative;
-  top: -15px;            /* moves heading slightly upwards */
+  top: -15px;
   text-align: left;
 }
 
@@ -18,7 +18,7 @@
   gap: 40px;
   flex-wrap: wrap;
   position: relative;
-  margin-top: 80px;
+  margin-top: 40px; /* desktop top margin */
 }
 
 .brandName {
@@ -27,8 +27,8 @@
   color: #673AB7;
   letter-spacing: 1.5px;
   margin-bottom: 20px;
-  margin-top: 0;  /* Add this */
-  padding-top: 0;  /* Add this */
+  margin-top: 0;
+  padding-top: 0;
   display: inline-block;
 }
 
@@ -36,15 +36,6 @@
   flex: 1;
   min-width: 400px;
   z-index: 2;
-}
-
-.brandName {
-  font-size: 24px;
-  font-weight: 700;
-  color: #673AB7;
-  letter-spacing: 1.5px;
-  margin-bottom: 20px;
-  display: inline-block;
 }
 
 .exploreBtn {
@@ -221,6 +212,7 @@
   .hero {
     padding: 120px 6% 60px;
     gap: 40px;
+    margin-top: 40px; /* desktop margin unchanged */
   }
 
   .left h1 {
@@ -240,11 +232,12 @@
   }
 }
 
+/* ===== MOBILE VIEW (≤768px) ===== */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
-    padding: 100px 5% 40px;
-    margin-top: 70px;
+    padding: 70px 5% 40px; /* reduced top padding */
+    margin-top: 10px;      /* reduced top margin */
     min-height: auto;
     gap: 40px;
   }
@@ -302,10 +295,12 @@
   }
 }
 
+/* ===== SMALL MOBILE (≤600px) ===== */
 @media (max-width: 600px) {
   .hero {
-    padding: 90px 4% 30px;
+    padding: 60px 4% 30px; /* further reduced top padding */
     gap: 30px;
+    margin-top: 8px;      /* further reduced top margin */
   }
 
   .brandName {
@@ -361,9 +356,12 @@
   }
 }
 
+/* ===== VERY SMALL MOBILE (≤400px) ===== */
 @media (max-width: 400px) {
   .hero {
-    padding: 80px 3% 20px;
+    padding: 50px 3% 20px; /* reduced top padding */
+    gap: 10px;
+    margin-top: 5px;       /* reduced top margin */
   }
 
   .brandName {

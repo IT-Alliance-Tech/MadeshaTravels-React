@@ -34,9 +34,9 @@ export default function Footer() {
   ];
 
   const contactInfo = [
-    "(+91) 9980942628",
-    "madeshatourstravels@gmail.com",
-    "#1713, Muneshwara Prasanna, Opposite to AD Clasia Apartment, AECS LAYOUT, A BLOCK, Singasandra, Bangalore, 560068",
+    { type: "phone", value: "(+91) 9980942628" },
+    { type: "email", value: "madeshatourstravels@gmail.com" },
+    { type: "address", value: "#1713, Muneshwara Prasanna, Opposite to AD Clasia Apartment, AECS LAYOUT, A BLOCK, Singasandra, Bangalore, 560068" },
   ];
 
   const toggleSection = (name) => {
@@ -45,11 +45,9 @@ export default function Footer() {
 
   const handleScroll = (id) => {
     if (!id) return;
-    
-    // Navigate to home first if not already there
+
     if (window.location.pathname !== '/') {
       navigate('/');
-      // Wait a bit for navigation to complete, then scroll
       setTimeout(() => {
         const section = document.getElementById(id);
         if (section) {
@@ -85,7 +83,7 @@ export default function Footer() {
         {/* Left Section */}
         <div className={styles["footer-left"]}>
           <div className={styles["logo-area"]}>
-            <button 
+            <button
               onClick={() => navigate('/')}
               style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
             >
@@ -137,12 +135,29 @@ export default function Footer() {
         {/* Meet Us Section */}
         <div className={`${styles["footer-contact"]} ${openSection === "meet" ? styles.active : ""}`}>
           <h4 onClick={() => toggleSection("meet")}>Meet Us</h4>
-          {contactInfo.map((info, index) => (
-            <p key={index}>{info}</p>
-          ))}
+          {contactInfo.map((info, index) => {
+            if (info.type === "phone") {
+              return (
+                <p key={index}>
+                  <a href={`tel:${info.value.replace(/[^+\d]/g, '')}`} className={styles["contact-link"]}>
+                    {info.value}
+                  </a>
+                </p>
+              );
+            }
+            if (info.type === "email") {
+              return (
+                <p key={index}>
+                  <a href={`mailto:${info.value}`} className={styles["contact-link"]}>
+                    {info.value}
+                  </a>
+                </p>
+              );
+            }
+            return <p key={index}>{info.value}</p>;
+          })}
         </div>
       </div>
     </footer>
   );
-};
-
+}

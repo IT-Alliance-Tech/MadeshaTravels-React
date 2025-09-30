@@ -136,6 +136,17 @@
   /* padding removed */
 }
 
+/* ✅ Phone & Email links white */
+.contact-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  color: #fff;
+  text-decoration: underline; /* optional, remove if you want no underline */
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .footer {
