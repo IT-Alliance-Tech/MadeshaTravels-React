@@ -1,14 +1,25 @@
 "use client";
 
-import React, { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
 import tempoImg from "../../public/tempo2.png";
 import busImg from "../../public/buss.png";
 import carImg from "../../public/car11.png";
 import styles from "../styles/serviceDetails.module.css";
 
 export default function ServiceDetails() {
-  window.scrollTo(0, 0);
+    const { pathname } = useLocation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, 0);
+  }, [pathname]);
+
   const [searchParams] = useSearchParams();
   const serviceParam = searchParams.get("service") || "";
   const [busCurrent, setBusCurrent] = useState("bus21_25");
