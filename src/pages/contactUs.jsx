@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MapPin, Phone, Mail } from "lucide-react";
 import styles from "../styles/contactUs.module.css";
 
@@ -11,6 +11,17 @@ export default function ContactUs() {
   });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }, 0);
+  }, [pathname]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
