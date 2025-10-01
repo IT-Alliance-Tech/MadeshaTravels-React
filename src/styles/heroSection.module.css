@@ -1,14 +1,14 @@
 /* ================= HERO SECTION BRANDING ================= */
-.branding {
-  font-size: 2rem;
+.brandName {
+  font-size: 14px; /* further reduced */
   font-weight: 700;
   color: #673AB7;
-  margin-bottom: 12px;
-  position: relative;
-  top: -15px;
-  text-align: left;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px; /* adjusted spacing */
+  margin-top: 0;
+  padding-top: 0;
+  display: inline-block;
 }
-
 /* ================= HERO SECTION ================= */
 .hero {
   display: flex;
@@ -21,47 +21,10 @@
   margin-top: 40px; /* desktop top margin */
 }
 
-.brandName {
-  font-size: 24px;
-  font-weight: 700;
-  color: #673AB7;
-  letter-spacing: 1.5px;
-  margin-bottom: 20px;
-  margin-top: 0;
-  padding-top: 0;
-  display: inline-block;
-}
-
 .left {
   flex: 1;
   min-width: 400px;
   z-index: 2;
-}
-
-.exploreBtn {
-  background: #f1f1ff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 24px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #4b56d2;
-  transition: all 0.3s ease;
-}
-
-.exploreBtn:hover {
-  background: #e0e0ff;
-  transform: translateY(-2px);
-}
-
-.exploreBtn .icon {
-  font-size: 14px;
-  color: #4b56d2;
 }
 
 .left h1 {
@@ -91,6 +54,32 @@
   margin-bottom: 24px;
   max-width: 480px;
   line-height: 1.6;
+}
+
+.exploreBtn {
+  background: #f1f1ff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #4b56d2;
+  transition: all 0.3s ease;
+}
+
+.exploreBtn:hover {
+  background: #e0e0ff;
+  transform: translateY(-2px);
+}
+
+.exploreBtn .icon {
+  font-size: 14px;
+  color: #4b56d2;
 }
 
 .right {
@@ -125,6 +114,7 @@
   position: relative;
 }
 
+/* ================== IMAGE CARDS ================== */
 .imgCard,
 .imgCardTall {
   border-radius: 20px;
@@ -135,7 +125,7 @@
 
 .imgCard:hover,
 .imgCardTall:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px); /* only images move */
 }
 
 .imgCard img,
@@ -147,15 +137,16 @@
 }
 
 .leftCol .imgCard {
-  width: 220px;
-  height: 260px;
+  width: 200px; /* slightly reduced for better proportion */
+  height: 240px;
 }
 
 .rightCol .imgCardTall {
-  width: 220px;
-  height: 340px;
+  width: 200px;
+  height: 320px;
 }
 
+/* ================== STATIC OVERLAYS ================== */
 .iconOverlay {
   position: absolute;
   left: -18px;
@@ -172,6 +163,7 @@
   box-shadow: 0 8px 20px rgba(106, 13, 173, 0.5);
   z-index: 10;
   font-size: 18px;
+  pointer-events: none; /* keeps it static */
 }
 
 .badge {
@@ -187,6 +179,7 @@
   white-space: nowrap;
   box-shadow: 0 6px 20px rgba(0,0,0,0.2);
   z-index: 5;
+  pointer-events: none; /* keeps it static */
 }
 
 .userIcon {
@@ -205,6 +198,7 @@
   font-size: 22px;
   box-shadow: 0 8px 24px rgba(103, 58, 183, 0.4);
   z-index: 10;
+  pointer-events: none; /* keeps it static */
 }
 
 /* ================== RESPONSIVE ================== */
@@ -212,7 +206,7 @@
   .hero {
     padding: 120px 6% 60px;
     gap: 40px;
-    margin-top: 40px; /* desktop margin unchanged */
+    margin-top: 40px;
   }
 
   .left h1 {
@@ -220,25 +214,20 @@
   }
 
   .brandName {
-    font-size: 22px;
+    font-size: 18px; /* reduced for tablets */
+    margin-bottom: 14px;
   }
 
-  .left {
-    min-width: 320px;
-  }
-
-  .right {
+  .left, .right {
     min-width: 320px;
   }
 }
 
-/* ===== MOBILE VIEW (≤768px) ===== */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
-    padding: 70px 5% 40px; /* reduced top padding */
-    margin-top: 10px;      /* reduced top margin */
-    min-height: auto;
+    padding: 70px 5% 40px;
+    margin-top: 10px;
     gap: 40px;
   }
 
@@ -256,8 +245,8 @@
   }
 
   .brandName {
-    font-size: 20px;
-    margin-bottom: 16px;
+    font-size: 16px; /* reduced for mobile */
+    margin-bottom: 12px;
   }
 
   .left h1 {
@@ -279,13 +268,13 @@
   }
 
   .leftCol .imgCard {
-    width: 180px;
-    height: 220px;
+    width: 160px;
+    height: 200px;
   }
 
   .rightCol .imgCardTall {
-    width: 180px;
-    height: 300px;
+    width: 160px;
+    height: 280px;
   }
 
   .badge {
@@ -295,17 +284,16 @@
   }
 }
 
-/* ===== SMALL MOBILE (≤600px) ===== */
 @media (max-width: 600px) {
   .hero {
-    padding: 60px 4% 30px; /* further reduced top padding */
+    padding: 60px 4% 30px;
     gap: 30px;
-    margin-top: 8px;      /* further reduced top margin */
+    margin-top: 8px;
   }
 
   .brandName {
-    font-size: 16px;
-    margin-bottom: 12px;
+    font-size: 14px; /* smaller for small mobiles */
+    margin-bottom: 10px;
   }
 
   .left h1 {
@@ -326,13 +314,13 @@
   }
 
   .leftCol .imgCard {
-    width: 140px;
-    height: 180px;
+    width: 130px;
+    height: 170px;
   }
 
   .rightCol .imgCardTall {
-    width: 140px;
-    height: 260px;
+    width: 130px;
+    height: 240px;
   }
 
   .iconOverlay {
@@ -356,16 +344,15 @@
   }
 }
 
-/* ===== VERY SMALL MOBILE (≤400px) ===== */
 @media (max-width: 400px) {
   .hero {
-    padding: 50px 3% 20px; /* reduced top padding */
+    padding: 50px 3% 20px;
     gap: 10px;
-    margin-top: 5px;       /* reduced top margin */
+    margin-top: 5px;
   }
 
   .brandName {
-    font-size: 14px;
+    font-size: 12px; /* very small mobiles */
     letter-spacing: 1px;
   }
 
@@ -382,13 +369,13 @@
   }
 
   .leftCol .imgCard {
-    width: 120px;
-    height: 150px;
+    width: 110px;
+    height: 140px;
   }
 
   .rightCol .imgCardTall {
-    width: 120px;
-    height: 220px;
+    width: 110px;
+    height: 200px;
   }
 
   .iconOverlay {

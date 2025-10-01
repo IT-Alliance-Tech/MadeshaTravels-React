@@ -1,28 +1,21 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import tempoImg from "../../public/tempo2.png";
 import busImg from "../../public/buss.png";
 import carImg from "../../public/car11.png";
 import styles from "../styles/serviceDetails.module.css";
 
 export default function ServiceDetails() {
-    const { pathname } = useLocation();
-
-  useEffect(() => {
-    setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "instant",
-      });
-    }, 0);
-  }, [pathname]);
-
   const [searchParams] = useSearchParams();
   const serviceParam = searchParams.get("service") || "";
   const [busCurrent, setBusCurrent] = useState("bus21_25");
+
+  // Scroll to top when component mounts or serviceParam changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [serviceParam]);
 
   let content;
   if (serviceParam === "bus") {
@@ -36,8 +29,9 @@ export default function ServiceDetails() {
   return (
     <div className={styles.container}>
       <div
-        className={`${styles.serviceDetails} ${serviceParam === "car-service" ? styles.carService : ""
-          }`}
+        className={`${styles.serviceDetails} ${
+          serviceParam === "car-service" ? styles.carService : ""
+        }`}
       >
         <div className={styles.imageSection}>
           <img
@@ -75,15 +69,17 @@ export default function ServiceDetails() {
           {serviceParam === "bus" && (
             <div className={styles.busButtons}>
               <button
-                className={`${styles.busBtn} ${busCurrent === "bus21_25" ? styles.purpleBtn : styles.whiteBtn
-                  }`}
+                className={`${styles.busBtn} ${
+                  busCurrent === "bus21_25" ? styles.purpleBtn : styles.whiteBtn
+                }`}
                 onClick={() => setBusCurrent("bus21_25")}
               >
                 21 to 25 Seater
               </button>
               <button
-                className={`${styles.busBtn} ${busCurrent === "bus30_35" ? styles.purpleBtn : styles.whiteBtn
-                  }`}
+                className={`${styles.busBtn} ${
+                  busCurrent === "bus30_35" ? styles.purpleBtn : styles.whiteBtn
+                }`}
                 onClick={() => setBusCurrent("bus30_35")}
               >
                 30 to 35 Seater

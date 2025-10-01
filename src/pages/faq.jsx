@@ -44,9 +44,10 @@ export default function FaqSection() {
     }, 0);
   }, [pathname]);
 
+ 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
-    console.log(index,activeIndex)
+    console.log(index, activeIndex);
   };
 
   return (
@@ -69,12 +70,11 @@ export default function FaqSection() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className={`${styles.faqItem } ${activeIndex === index ? styles.active: ""}`}
+              className={`${styles.faqItem} ${activeIndex === index ? styles.active : ""}`}
             >
               <button
                 className={styles.faqQuestion}
                 onClick={() => toggleFAQ(index)}
-
               >
                 {faq.question}
                 <span className={styles.arrow}>▼</span>

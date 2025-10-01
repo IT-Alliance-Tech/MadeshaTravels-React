@@ -30,6 +30,8 @@ export default function PartnerSection() {
     }, 0);
   }, [pathname]);
 
+  
+
   return (
     <section className={styles.hero}>
       {/* Left Side */}
