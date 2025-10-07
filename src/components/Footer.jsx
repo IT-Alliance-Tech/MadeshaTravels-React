@@ -35,7 +35,7 @@ export default function Footer() {
 
   const contactInfo = [
     { type: "phone", value: "(+91) 9980942628" },
-    { type: "email", value: "madeshatourstravels@gmail.com" },
+    { type: "email", value: "madeshatoursntravels@gmail.com" },
     { type: "address", value: "#1713, Muneshwara Prasanna, Opposite to AD Clasia Apartment, AECS LAYOUT, A BLOCK, Singasandra, Bangalore, 560068" },
   ];
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MapPin, Phone, Mail } from "lucide-react";
+import { useLocation } from "react-router-dom";   // ✅ FIX ADDED
 import styles from "../styles/contactUs.module.css";
 
 export default function ContactUs() {
