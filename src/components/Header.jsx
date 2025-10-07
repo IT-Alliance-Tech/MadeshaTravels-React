@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../public/madeshalogo.svg";
 import styles from "../styles/header.module.css";
@@ -26,14 +25,14 @@ const Header = () => {
 
     // Scroll to top for Home
     if (id === "home") {
-      navigate('/');
+      navigate("/");
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
 
     // For other sections, navigate to home first if not already there
-    if (window.location.pathname !== '/') {
-      navigate('/');
+    if (window.location.pathname !== "/") {
+      navigate("/");
       setTimeout(() => {
         const section = document.getElementById(id);
         if (section) {
@@ -49,6 +48,7 @@ const Header = () => {
       return;
     }
 
+    // If already on home, scroll to section
     const section = document.getElementById(id);
     if (section) {
       const headerOffset = document.querySelector(`.${styles.header}`).offsetHeight;
@@ -69,9 +69,9 @@ const Header = () => {
     <header className={styles.header}>
       {/* Logo */}
       <div className={styles.logo}>
-        <button 
-          onClick={() => handleScroll('home')} 
-          style={{ background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}
+        <button
+          onClick={() => handleScroll("home")}
+          style={{ background: "none", border: "none", cursor: "pointer", outline: "none" }}
         >
           <img
             src={Logo}
@@ -99,19 +99,21 @@ const Header = () => {
       </nav>
 
       {/* Contact button */}
-      <div
-        className={`${styles["contact-button"]} ${
-          window.location.pathname === "/" ? styles["home-mobile-adjust"] : ""
-        }`}
-      >
-        <Link to="/contactUs" className={styles["contact-btn"]}>
+      <div className={styles["contact-button"]}>
+        <button
+          className={styles["contact-btn"]}
+          onClick={() => {
+            setIsMobileMenuOpen(false);
+            navigate("/contactUs");
+          }}
+        >
           Contact Us
-        </Link>
+        </button>
       </div>
 
       {/* Mobile Menu Toggle */}
-      <button 
-        className={styles.mobileMenuToggle} 
+      <button
+        className={styles.mobileMenuToggle}
         onClick={toggleMobileMenu}
         aria-label="Toggle menu"
       >
@@ -119,7 +121,7 @@ const Header = () => {
       </button>
 
       {/* Mobile Menu */}
-      <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
+      <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.mobileMenuOpen : ""}`}>
         <nav className={styles.mobileNav}>
           <ul>
             {navLinks.map((link, index) => (
@@ -133,13 +135,15 @@ const Header = () => {
               </li>
             ))}
             <li>
-              <Link 
-                to="/contactUs" 
+              <button
                 className={styles["mobile-contact-btn"]}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  navigate("/contactUs");
+                }}
               >
                 Contact Us
-              </Link>
+              </button>
             </li>
           </ul>
         </nav>
@@ -147,8 +151,8 @@ const Header = () => {
 
       {/* Overlay */}
       {isMobileMenuOpen && (
-        <div 
-          className={styles.overlay} 
+        <div
+          className={styles.overlay}
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
