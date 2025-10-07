@@ -109,7 +109,7 @@ export default function ContactUs() {
               </div>
               <div>
                 <h4 className={styles.infoHeading}>Email</h4>
-                <p>modetraboutourstravels@gmail.com</p>
+                <p>madeshatoursntravels@gmail.com</p>
               </div>
             </div>
           </div>
